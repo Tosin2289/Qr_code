@@ -44,12 +44,12 @@ class _HomePageState extends State<HomePage> {
         items: [
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.generating_tokens,
+                Icons.qr_code,
               ),
               label: 'generator'),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.camera_enhance_outlined,
+                Icons.qr_code_scanner,
               ),
               label: 'Scanner'),
         ],
