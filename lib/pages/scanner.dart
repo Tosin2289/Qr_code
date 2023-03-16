@@ -31,6 +31,8 @@ class _ScannerState extends State<Scanner> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.green,
         onPressed: () {
           if (camState == true) {
             setState(() {
