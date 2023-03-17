@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qrcode/pages/generator.dart';
+import 'package:qrcode/pages/generator_image.dart';
 import 'package:qrcode/pages/scanner.dart';
 
 void main() {
@@ -30,7 +31,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentindex = 0;
-  List pages = [Generator(), Scanner()];
+  List pages = [
+    Generator(),
+    ImageGenerator(),
+    Scanner(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +53,12 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(
                 Icons.qr_code,
               ),
-              label: 'generator'),
+              label: 'Generator'),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.qr_code_2,
+              ),
+              label: 'Image code'),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.qr_code_scanner,
