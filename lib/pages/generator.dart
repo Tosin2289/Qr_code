@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:file_picker/file_picker.dart';
 
 class Generator extends StatefulWidget {
   const Generator({Key? key}) : super(key: key);
@@ -10,6 +11,7 @@ class Generator extends StatefulWidget {
 
 class _GeneratorState extends State<Generator> {
   String data = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,10 +21,17 @@ class _GeneratorState extends State<Generator> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Center(
-            child: QrImage(
-              data: data,
-              backgroundColor: Colors.white,
-              size: 300,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: QrImage(
+                embeddedImage: AssetImage("assets/icon.jpg"),
+                data: data,
+                embeddedImageStyle: QrEmbeddedImageStyle(
+                  size: Size(30, 30),
+                ),
+                backgroundColor: Colors.white,
+                size: 250,
+              ),
             ),
           ),
           SizedBox(
@@ -54,6 +63,20 @@ class _GeneratorState extends State<Generator> {
           SizedBox(
             height: 20,
           ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: RawMaterialButton(
+              shape: const StadiumBorder(),
+              fillColor: Colors.green,
+              padding: EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+              onPressed: (() {}),
+              child: Text(
+                "Download",
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+              ),
+            ),
+          )
         ],
       ),
     );

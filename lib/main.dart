@@ -33,7 +33,6 @@ class _HomePageState extends State<HomePage> {
   int currentindex = 0;
   List pages = [
     Generator(),
-    ImageGenerator(),
     Scanner(),
   ];
   @override
@@ -54,11 +53,6 @@ class _HomePageState extends State<HomePage> {
                 Icons.qr_code,
               ),
               label: 'Generator'),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.qr_code_2,
-              ),
-              label: 'Image code'),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.qr_code_scanner,
