@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qrcode/pages/generator.dart';
-import 'package:qrcode/pages/generator_image.dart';
+
 import 'package:qrcode/pages/scanner.dart';
 
 void main() {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gallery_saver/gallery_saver.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:file_picker/file_picker.dart';
 
 class Generator extends StatefulWidget {
   const Generator({Key? key}) : super(key: key);
@@ -11,6 +11,34 @@ class Generator extends StatefulWidget {
 
 class _GeneratorState extends State<Generator> {
   String data = '';
+  void saveimage() async {
+    try {
+      String pat = "assets/icon.jpg";
+      final path = QrImage(
+        data: data,
+        embeddedImage: AssetImage("assets/icon.jpg"),
+        embeddedImageStyle: QrEmbeddedImageStyle(
+          size: Size(30, 30),
+        ),
+        backgroundColor: Colors.white,
+        size: 250,
+      ).toString();
+      String album = 'QR';
+      GallerySaver.saveImage(pat, albumName: album)
+          .then((success) => setState(() {
+                print('Image is saved');
+              }));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Image Saved"),
+        backgroundColor: Colors.grey,
+      ));
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Download fail"),
+        backgroundColor: Colors.red,
+      ));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +66,7 @@ class _GeneratorState extends State<Generator> {
             height: 24,
           ),
           SizedBox(
-            width: 300,
+            width: 250,
             child: TextField(
               onChanged: ((value) {
                 setState(() {
@@ -63,18 +91,15 @@ class _GeneratorState extends State<Generator> {
           SizedBox(
             height: 20,
           ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: RawMaterialButton(
-              shape: const StadiumBorder(),
-              fillColor: Colors.green,
-              padding: EdgeInsets.symmetric(horizontal: 18, vertical: 12),
-              onPressed: (() {}),
-              child: Text(
-                "Download",
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-              ),
+          RawMaterialButton(
+            shape: const StadiumBorder(),
+            fillColor: Colors.green,
+            padding: EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+            onPressed: saveimage,
+            child: Text(
+              "Download",
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
             ),
           )
         ],
