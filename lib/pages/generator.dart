@@ -24,14 +24,14 @@ class _GeneratorState extends State<Generator> {
         size: 250,
       ).toString();
       String album = 'QR';
-      GallerySaver.saveImage(pat, albumName: album)
+      GallerySaver.saveImage(path, albumName: album)
           .then((success) => setState(() {
                 print('Image is saved');
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text("Image Saved"),
+                  backgroundColor: Colors.grey,
+                ));
               }));
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Image Saved"),
-        backgroundColor: Colors.grey,
-      ));
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Download fail"),
