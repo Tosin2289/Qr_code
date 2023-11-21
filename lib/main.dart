@@ -16,54 +16,54 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        useMaterial3: true,
       ),
-      home: HomePage(),
+      home: QRCodeScannerScreen(),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+// class HomePage extends StatefulWidget {
+//   const HomePage({Key? key}) : super(key: key);
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
+//   @override
+//   State<HomePage> createState() => _HomePageState();
+// }
 
-class _HomePageState extends State<HomePage> {
-  int currentindex = 0;
-  List pages = [Generator(), Scanner(), QRCodeScannerScreen()];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        unselectedItemColor: Colors.grey,
-        currentIndex: currentindex,
-        onTap: ((selectedindex) {
-          setState(() {
-            currentindex = selectedindex;
-          });
-        }),
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.qr_code,
-              ),
-              label: 'Generator'),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.qr_code_scanner,
-              ),
-              label: 'Scanner'),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.code,
-              ),
-              label: 'Format'),
-        ],
-      ),
-      body: pages[currentindex],
-    );
-  }
-}
+// class _HomePageState extends State<HomePage> {
+//   int currentindex = 0;
+//   List pages = [Generator(), Scanner(), QRCodeScannerScreen()];
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       bottomNavigationBar: BottomNavigationBar(
+//         backgroundColor: Colors.black,
+//         unselectedItemColor: Colors.grey,
+//         currentIndex: currentindex,
+//         onTap: ((selectedindex) {
+//           setState(() {
+//             currentindex = selectedindex;
+//           });
+//         }),
+//         items: [
+//           BottomNavigationBarItem(
+//               icon: Icon(
+//                 Icons.qr_code,
+//               ),
+//               label: 'Generator'),
+//           BottomNavigationBarItem(
+//               icon: Icon(
+//                 Icons.qr_code_scanner,
+//               ),
+//               label: 'Scanner'),
+//           BottomNavigationBarItem(
+//               icon: Icon(
+//                 Icons.code,
+//               ),
+//               label: 'Format'),
+//         ],
+//       ),
+//       body: pages[currentindex],
+//     );
+//   }
+// }
