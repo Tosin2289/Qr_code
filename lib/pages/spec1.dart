@@ -49,6 +49,13 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              qrData = "";
+            });
+          },
+          child: Icon(Icons.lock_reset)),
     );
   }
 
