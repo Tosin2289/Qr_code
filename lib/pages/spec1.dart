@@ -25,24 +25,23 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
           child: Column(
             children: [
               Expanded(
-                flex: 2,
+                flex: 1,
                 child: Center(
                   child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
                           "Event",
                           style: TextStyle(fontSize: 30, color: Colors.white),
                         ),
+                        SizedBox(width: 5),
                         Text(
                           "Scanner",
                           style: TextStyle(
                               fontSize: 35,
-                              color: Colors.white,
+                              color: Colors.yellow.shade600,
                               fontWeight: FontWeight.w800),
                         ),
                       ],
@@ -51,7 +50,7 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
                 ),
               ),
               Expanded(
-                flex: 3,
+                flex: 4,
                 child: Center(
                   child: Padding(
                     padding: const EdgeInsets.all(24.0),
@@ -91,6 +90,7 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.yellow.shade600,
           onPressed: () {
             setState(() {
               qrData = "";
