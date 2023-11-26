@@ -17,37 +17,78 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Event Scanner'),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            flex: 4,
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: QRView(
-                    key: qrKey,
-                    onQRViewCreated: _onQRViewCreated,
+      backgroundColor: Colors.black,
+      body: SafeArea(
+        child: Padding(
+          padding:
+              const EdgeInsets.only(top: 10.0, right: 10, left: 10, bottom: 0),
+          child: Column(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Center(
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "Event",
+                          style: TextStyle(fontSize: 30, color: Colors.white),
+                        ),
+                        Text(
+                          "Scanner",
+                          style: TextStyle(
+                              fontSize: 35,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w800),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
+              Expanded(
+                flex: 3,
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(color: Colors.yellow.shade600)),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: QRView(
+                          key: qrKey,
+                          onQRViewCreated: _onQRViewCreated,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                      child: qrData.isNotEmpty
+                          ? parseQRDatas(qrData)
+                          : Text(
+                              "Scan qr code",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            )),
+                ),
+              ),
+            ],
           ),
-          Expanded(
-            flex: 4,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(
-                  child: qrData.isNotEmpty
-                      ? parseQRDatas(qrData)
-                      : Text("Scan qr code")),
-            ),
-          ),
-        ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -163,7 +204,13 @@ Widget parseQRDatas(String qrData) {
       ),
     );
   } catch (e) {
-    return Text("Invalid Format");
+    return Center(
+      child: Text(
+        "Invalid Format",
+        style: TextStyle(
+            fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+      ),
+    );
   }
 }
 
@@ -182,13 +229,12 @@ class MyRichText extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white),
         ),
         Text(
           value,
-          style: TextStyle(
-            fontSize: 14,
-          ),
+          style: TextStyle(fontSize: 14, color: Colors.white),
         ),
       ],
     );
